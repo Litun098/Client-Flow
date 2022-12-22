@@ -1,8 +1,10 @@
 ### CRM Application backend
 
 # Install required packages
-```npm i
+```
+    npm i
 ```
 # Start Application
-``` npm start
+``` 
+    npm start
 ```
