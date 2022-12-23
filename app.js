@@ -1,15 +1,14 @@
-import express, { json } from 'express';
-import { mongoose } from 'mongoose';
-import { DB_NAME,DB_URL } from './config/db.config.js';
-import dotenv from 'dotenv'
-dotenv.config();
+const express = require('express');
+const { mongoose } =require('mongoose');
+const {DB_URL} = require('./config/db.config')
+
+
 
 const app = express()
 
-
+console.log(DB_URL);
 mongoose.connect(DB_URL);
-// console.log(DB_NAME);
-app.use(json());
+app.use(express.json());
 
 const db = mongoose.connection;
 db.on('error',()=> console.log("Can't connect to DB"))
