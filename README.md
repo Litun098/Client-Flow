@@ -17,7 +17,7 @@
 ```
 | body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `email` | `string` | **Required**. Email|
+| `name` | `string` | **Required**. Name|
 | `userId` | `string` | **Required**. unique userId|
 | `email` | `string` | **Required**. email|
 | `userType` | `string` | **Required**. userType|
