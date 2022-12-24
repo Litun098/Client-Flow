@@ -24,15 +24,15 @@ exports.signup = async (req,res)=>{
     }
 
     try{
-        const usetCreated = await User.create(userObj);
+        const userCreated = await User.create(userObj);
         const postResponse = {
-            name:usetCreated.name,
-            userId:usetCreated.userId,
-            email:usetCreated.email,
-            userTypes:usetCreated.userTypes,
-            userStatus:usetCreated.userStatus,
-            createdAt:usetCreated.createdAt,
-            updatedAt:usetCreated.updatedAt
+            name:userCreated.name,
+            userId:userCreated.userId,
+            email:userCreated.email,
+            userTypes:userCreated.userTypes,
+            userStatus:userCreated.userStatus,
+            createdAt:userCreated.createdAt,
+            updatedAt:userCreated.updatedAt
         }
         res.status(201).send(postResponse);
     }catch(err){

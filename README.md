@@ -33,3 +33,34 @@
         "password":"admin@admin",
     }
 ```
+
+
+#### Sign in User
+
+``` http
+    POST localhost:3000//crm/api/auth/signin
+```
+| body | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `userId` | `string` | **Required**. unique userId|
+| `password` | `string` | **Required**. password|
+
+#### Example
+```
+    {
+        "userId":"admin",   
+        "password":"admin@admin",
+    }
+```
+#### Output
+
+```
+    {
+        "name": "user_name",
+        "userId": "admin",
+        "email": "mail@gmail.com",
+        "userTypess": "ENGINEER",
+        "userStatus": "APPROVED",
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY3MTg4MjUzNCwiZXhwIjoxNjcxOTY4OTM0fQ.EVfZybdHFCQQN8NaIyCMK-G8UcES2Ry2gRr5MwhEkyI"
+    }
+```

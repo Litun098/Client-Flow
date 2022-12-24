@@ -4,6 +4,7 @@ const {DB_URL} = require('./config/db.config')
 const User = require('./models/user.model');
 const bcrypt = require('bcrypt');
 const constants = require('./utils/constants');
+const authRouter = require('./routes/auth.routes');
 
 
 
@@ -11,6 +12,7 @@ const app = express()
 
 mongoose.connect(DB_URL);
 app.use(express.json());
+authRouter(app);
 
 const db = mongoose.connection;
 db.on('error',()=> console.log("Can't connect to DB"))
@@ -41,8 +43,6 @@ async function init(){
     }
 }
 
-let authRouter = require('./routes/auth.routes');
-authRouter(app);
 // let userRouter = require('./routes/user.routes');
 // userRouter(app);
 

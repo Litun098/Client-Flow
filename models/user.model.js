@@ -30,10 +30,15 @@ const userSchema = mongoose.Schema({
         type:Date,
         default:()=>Date.now()
     },
-    userType:{
-        type:String,
-        required:true,
-        default:"APPROVED"
-    }    
+    userTypes: {
+        type: String,
+        required: true,
+        default: "CUSTOMER"
+    }, 
+    userStatus: {
+        type: String,
+        required: true,
+        default: "APPROVED"
+    }   
 });
 module.exports = mongoose.model('User',userSchema);
