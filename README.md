@@ -22,7 +22,6 @@
 | `email` | `string` | **Required**. email|
 | `userType` | `string` | **Required**. userType|
 | `password` | `string` | **Required**. password|
-| `userStatus` | `string` | **Required**. userStatus|
 
 #### Example
 ```
