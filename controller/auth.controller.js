@@ -1,5 +1,5 @@
 const User  = require('../models/user.model');
-const {userType, constants} = require('../utils/constants');
+const constants = require('../utils/constants');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth.config');
@@ -7,8 +7,9 @@ const config = require('../config/auth.config');
 exports.signup = async (req,res)=>{
     let userStatus;
 
-    if(req.body.userType == userType.engineer || req.body.user == userType.admin){
-        userType = constants.userStatus.pending 
+    console.log(constants);
+    if(req.body.userTypes == constants.userTypes.engineer || req.body.user == constants.userTypes.admin){
+        userStatus = constants.userStatus.pending
     }else{
         userStatus = constants.userStatus.approved
     }
@@ -17,7 +18,7 @@ exports.signup = async (req,res)=>{
         name:req.body.name,
         userId:req.body.userId,
         email:req.body.email,
-        userType:req.body.userType,
+        userTypes:req.body.userTypes,
         password:bcrypt.hashSync(req.body.password,10),
         userStatus:userStatus
     }
@@ -28,10 +29,10 @@ exports.signup = async (req,res)=>{
             name:usetCreated.name,
             userId:usetCreated.userId,
             email:usetCreated.email,
-            userType:usetCreated.userType,
+            userTypes:usetCreated.userTypes,
             userStatus:usetCreated.userStatus,
             createdAt:usetCreated.createdAt,
-            updatedAt:userCreated.updatedAt
+            updatedAt:usetCreated.updatedAt
         }
         res.status(201).send(postResponse);
     }catch(err){
@@ -77,7 +78,7 @@ exports.signin = async(req,res)=>{
         name: user.name,
         userId: user.userId,
         email: user.email,
-        userTypes: user.userType,
+        userTypess: user.userTypes,
         userStatus: user.userStatus,
         accessToken: token
     })
