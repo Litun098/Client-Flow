@@ -18,7 +18,7 @@
 | body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `email` | `string` | **Required**. Email|
-| `userId` | `string` | **Required**. userId|
+| `userId` | `string` | **Required**. unique userId|
 | `email` | `string` | **Required**. email|
 | `userType` | `string` | **Required**. userType|
 | `password` | `string` | **Required**. password|
@@ -28,7 +28,7 @@
 ```
     {
         "name":"user_name",
-        "userId":"admin",   //Should be unique
+        "userId":"admin",   
         "email":"mail@gmail.com",
         "userType":"ADMIN",
         "password":"admin@admin",
