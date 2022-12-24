@@ -28,7 +28,7 @@
 ```
     {
         "name":"user_name",
-        "userId":"admin",
+        "userId":"admin",   //Should be unique
         "email":"mail@gmail.com",
         "userType":"ADMIN",
         "password":"admin@admin",
