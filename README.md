@@ -13,7 +13,7 @@
 #### Sign up User
 
 ``` http
-    POST localhost:3000//crm/api/auth/signup
+    POST localhost:3000/crm/api/auth/signup
 ```
 | body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
