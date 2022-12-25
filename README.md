@@ -36,7 +36,7 @@
 
 #### NOTE : You can login only if the user status is approved.
 
-#### Sign in User
+#### Signin User
 
 ``` http
     POST localhost:3000//crm/api/auth/signin
