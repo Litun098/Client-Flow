@@ -62,6 +62,8 @@
         "email": "mail@gmail.com",
         "userTypess": "ENGINEER",
         "userStatus": "APPROVED",
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY3MTg4MjUzNCwiZXhwIjoxNjcxOTY4OTM0fQ.EVfZybdHFCQQN8NaIyCMK-G8UcES2Ry2gRr5MwhEkyI"
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                        .eyJ1c2VySWQiOiJhZG1pbiIsImlhdCI6MTY3MTg4MjUzNCwiZXhwIjoxNjcxOTY4OTM0fQ
+                        .EVfZybdHFCQQN8NaIyCMK-G8UcES2Ry2gRr5MwhEkyI"
     }
 ```
