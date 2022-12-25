@@ -39,7 +39,7 @@
 #### Signin User
 
 ``` http
-    POST localhost:3000//crm/api/auth/signin
+    POST localhost:3000/crm/api/auth/signin
 ```
 | body | Type     | Description                |
 | :-------- | :------- | :------------------------- |
