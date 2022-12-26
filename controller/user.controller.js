@@ -46,7 +46,7 @@ const fetchByTypeAndStatus = async (userTypeReq,userStatusReq,res)=>{
     return users;
 }
 
-const fetchByType = async (userTypeReq,res){
+const fetchByType = async (userTypeReq,res)=>{
     let users;
 
     try{
