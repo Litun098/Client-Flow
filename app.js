@@ -23,6 +23,8 @@ db.on('open',()=> {
     // init()
 })
 
+
+// This was for testing purpose
 async function init(){
     let user = await User.findOne({userId:"admin"});
 
