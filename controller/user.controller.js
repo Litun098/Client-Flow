@@ -1,11 +1,12 @@
-const e = require('express');
+const express = require('express');
 const User = require('../models/user.model');
-const ObjectConverter = require("../utils/constants")
+const ObjectConverter = require("../utils/objectConverter")
+const constants = require("../utils/constants")
 
 const fetchAll = async (res)=>{
     let users;
     try{
-        users = await User.find()
+        users = await User.find();
     }catch(err){
         res.status(500).send({
             message:"Some internal error occured"
@@ -16,7 +17,7 @@ const fetchAll = async (res)=>{
 
 const fetchByName = async (userNameReq,res)=>{
     let users;
-
+    
     try{
         users = await User.find({
             name:userNameReq
@@ -49,7 +50,7 @@ const fetchByTypeAndStatus = async (userTypeReq,userStatusReq,res)=>{
 
 const fetchByType = async (userTypeReq,res)=>{
     let users;
-
+    
     try{
         users = await User.find({
             userType:userTypeReq
@@ -82,9 +83,9 @@ const fetchByStatus = async (userStatusReq,req)=>{
 exports.findById = async (req,res)=>{
     const userIdReq = req.params.userId;
     let user;
-
+    
     try{
-        user = await User.find({
+        user = await User.findOne({
             userId:userIdReq
         })
     }catch(err){
@@ -92,8 +93,8 @@ exports.findById = async (req,res)=>{
             message:"Internal server error"
         })
     }
-    if(user.length > 0){
-        res.status(200).send(ObjectConverter.userResponse(user));
+    if(user){
+        res.status(200).send(user);
     }else{
         res.status(200).send({
             message:`User with this id [${userIdReq}] is not present`
@@ -104,15 +105,15 @@ exports.findById = async (req,res)=>{
 
 /**
  * Fetch the list of all users
- */
+*/
 
 exports.findAll = async (req,res)=>{
     let user;
-
+    
     let userTypeReq = req.body.userTypes;
     let userStatusReq = req.body.userStatus;
     let userNameReq = req.query.name;
-
+    
     if(userNameReq){
         user = await fetchByName(userNameReq,res);
     }else if(userTypeReq && userStatusReq){
@@ -124,9 +125,7 @@ exports.findAll = async (req,res)=>{
     }else{
         user = await fetchAll(res)
     }
-    res.status(200).send(
-        ObjectConverter.userResponse(user)
-    )
+    res.status(200).send(ObjectConverter.userResponse(user))
 }
 
 exports.update = async (req,res)=>{

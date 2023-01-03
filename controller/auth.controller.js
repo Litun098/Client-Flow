@@ -7,13 +7,11 @@ const config = require('../config/auth.config');
 exports.signup = async (req,res)=>{
     let userStatus;
 
-    console.log(constants);
-    if(req.body.userTypes == constants.userTypes.engineer || req.body.user == constants.userTypes.admin){
+    if(req.body.userTypes == constants.userTypes.engineer || req.body.userTypes == constants.userTypes.admin){
         userStatus = constants.userStatus.pending
     }else{
         userStatus = constants.userStatus.approved
     }
-    console.log(req);
     const userObj = {
         name:req.body.name,
         userId:req.body.userId,

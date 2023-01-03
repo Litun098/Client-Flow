@@ -28,7 +28,7 @@ const isAdmin = async (req,res,next)=>{
         userId : req.body.userId
     })
 
-    if(user && user.userType == constants.userTypes.admin){
+    if(user && user.userTypes == constants.userTypes.admin){
         next();
     }else{
         res.status(403).send({
