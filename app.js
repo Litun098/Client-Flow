@@ -5,7 +5,8 @@ const User = require('./models/user.model');
 const bcrypt = require('bcrypt');
 const constants = require('./utils/constants');
 const authRouter = require('./routes/auth.routes');
-let userRouter = require('./routes/user.routes');
+const userRouter = require('./routes/user.routes');
+const ticketRouter = require('./routes/ticket.routes');
 
 
 
@@ -15,6 +16,7 @@ mongoose.connect(DB_URL);
 app.use(express.json());
 authRouter(app);
 userRouter(app);
+ticketRouter(app);
 
 const db = mongoose.connection;
 db.on('error',()=> console.log("Can't connect to DB"))

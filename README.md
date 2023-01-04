@@ -154,8 +154,8 @@
 | :-----------------| :------- | :------------------------- |
 | `x-access-token`  | `string` | **Required**. token        |
 
-| body       | Type     | Description                |
-| :--------  | :------- | :------------------------- |
+| body           | Type     | Description                    |
+| :------------  | :------- | :-------------------------     |
 | `userStatus`   | `string` | **Required**. update userStatus|
 
 #### Example 
@@ -174,5 +174,49 @@
 ```
     {
         "message": "User record has been updated successfully."
+    }
+```
+
+#### Create ticket
+
+``` http
+    POST localhost:3000/crm/api/ticket/
+```
+| header            | Type     | Description                |
+| :-----------------| :------- | :------------------------- |
+| `x-access-token`  | `string` | **Required**. token        |
+
+
+| body              | Type     | Description                |
+| :-----------------| :------- | :------------------------- |
+| `title`  | `string` | **Required**. title of the ticket        |
+| `ticketPriority`  | `string` |  Priority of the ticket        |
+| `description`  | `string` |  Description        |
+| `status`  | `string` | . Status open or closed        |
+
+#### Example
+
+```
+    {
+        "title":"The first ticket",
+        "ticketPriority":2,
+        "description":"Random description for random ticket",
+        "status": "OPEN"
+    }
+```
+
+#### Output
+
+```
+    {
+        "ticket": "The first ticket",
+        "ticketPriority": "2",
+        "description": "Random description for random ticket",
+        "status": "OPEN",
+        "reporter": "dibya123",
+        "assignee": "litun12345",
+        "id": "63b5babf0e3bf0ba61c233a7",
+        "createdAt": "2023-01-04T17:43:27.495Z",
+        "updatedAt": "2023-01-04T17:43:27.495Z"
     }
 ```

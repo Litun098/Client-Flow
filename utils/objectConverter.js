@@ -11,3 +11,25 @@ exports.userResponse = (users)=>{
     });
     return userResult;
 }
+
+exports.ticketResponse = (ticket) =>{
+    return {
+        ticket : ticket.title,
+        ticketPriority:ticket.ticketPriority,
+        description:ticket.description,
+        status:ticket.status,
+        reporter:ticket.reporter,
+        assignee:ticket.assignee,
+        id:ticket._id,
+        createdAt:ticket.createdAt,
+        updatedAt:ticket.updatedAt
+    }
+}
+
+exports.ticketListResponse = (ticket) =>{
+    let ticketResult = [];
+    ticket.forEach(ticket =>{
+        return ticketResult.push(exports.ticketResponse(ticket))
+    })
+    return ticketResult;
+}

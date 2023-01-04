@@ -1,6 +1,7 @@
 const User = require('../models/user.model');
 const Ticket = require('../models/ticket.model')
-const constants = require('../utils/objectConverter');
+const objectConverter = require('../utils/objectConverter');
+const constants = require('../utils/constants');
 
 exports.createTicket = async (req,res)=>{
     const ticketObject = {
@@ -15,20 +16,22 @@ exports.createTicket = async (req,res)=>{
         userTypes: constants.userTypes.engineer,
         userStatus: constants.userStatus.approved
     })
+    console.log(engineer);
 
-    ticketObject.assignee = engineer.userId
+    ticketObject.assignee = engineer.userId;
 
     try {
         const ticket = await Ticket.create(ticketObject)
-
+        console.log(ticket)
         if (ticket) {
             const user = await User.findOne({
                 userId: req.body.userId
             })
-            user.ticketsCreated.push(ticket._id)
+            console.log(user)
+            user.ticketCreated.push(ticket._id)
             await user.save()
 
-            engineer.ticketsAssigned.push(ticket._id)
+            engineer.ticketAssigned.push(ticket._id)
             await engineer.save()
 
             res.status(201).send(objectConverter.ticketResponse(ticket))
@@ -82,7 +85,37 @@ exports.updateTicket = async (req, res) => {
     }
 }
 
-exports.getAllTickets = async (req, res) => { }
+exports.getAllTickets = async (req, res) => { 
+    /**
+     * Use cases:
+     *  - ADMIN : should get the list of all the tickets
+     *  - CUSTOMER : should get all the tickets created by him/her
+     *  - ENGINEER : should get all the tickets assigned to him/her
+     */
 
-exports.getOneTicket = async (req, res) => { }
-Footer
+    const queryObject = {};
+
+    if(req.query.status != undefined){
+        queryObject.status = req.query.status;
+    }
+
+    const savedUser = await User.findOne({userId:req.body.userId})
+
+    if(savedUser.user == constants.userTypes.admin){
+        // Do something
+    }else if(savedUser.userTypes == constants.userTypes.customer){
+        queryObject.reporter = savedUser.userId
+    }else{
+        queryObject.assignee = savedUser.userId
+    }
+
+    const ticket = await Ticket.find(queryObject);
+    res.status(200).send(objectConverter.ticketListResponse(ticket));
+}
+
+exports.getOneTicket = async (req, res) => {
+    const ticket = await Ticket.findOne({
+        _id:req.params.id
+    })
+    res.status(200).status(objectConverter.ticketResponse(ticket));
+}
