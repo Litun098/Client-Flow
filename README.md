@@ -221,10 +221,10 @@
     }
 ```
 
-#### Create ticket
+#### Update ticket
 
 ``` http
-    POST localhost:3000/crm/api/ticket/:id
+    PUT localhost:3000/crm/api/ticket/:id
 ```
 | header            | Type     | Description                |
 | :-----------------| :------- | :------------------------- |
@@ -244,6 +244,10 @@
 
 
 #### Example
+
+``` http
+    PUT localhost:3000/crm/api/ticket/63b5babf0e3bf0ba61c233a7
+```
 
 ```
     {
