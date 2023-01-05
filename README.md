@@ -187,12 +187,12 @@
 | `x-access-token`  | `string` | **Required**. token        |
 
 
-| body              | Type     | Description                |
-| :-----------------| :------- | :------------------------- |
-| `title`  | `string` | **Required**. title of the ticket        |
-| `ticketPriority`  | `string` |  Priority of the ticket        |
-| `description`  | `string` |  Description        |
-| `status`  | `string` | . Status open or closed        |
+| body              | Type     | Description                        |
+| :-----------------| :------- | :----------------------------------|
+| `title`           | `string` | **Required**. title of the ticket  |
+| `ticketPriority`  | `string` |  Priority of the ticket            |
+| `description`     | `string` |  Description                       |
+| `status`          | `string` | Status open or closed              |
 
 #### Example
 
@@ -210,6 +210,52 @@
 ```
     {
         "ticket": "The first ticket",
+        "ticketPriority": "2",
+        "description": "Random description for random ticket",
+        "status": "OPEN",
+        "reporter": "dibya123",
+        "assignee": "litun12345",
+        "id": "63b5babf0e3bf0ba61c233a7",
+        "createdAt": "2023-01-04T17:43:27.495Z",
+        "updatedAt": "2023-01-04T17:43:27.495Z"
+    }
+```
+
+#### Create ticket
+
+``` http
+    POST localhost:3000/crm/api/ticket/:id
+```
+| header            | Type     | Description                |
+| :-----------------| :------- | :------------------------- |
+| `x-access-token`  | `string` | **Required**. token        |
+
+| params            | Type     | Description                                |
+| :-----------------| :------- | :------------------------------------------|
+| `id`              | `string` | **Required**.Id of the ticked to be updated|
+
+
+| body              | Type     | Description                                |
+| :-----------------| :------- | :------------------------------------------|
+| `title`           | `string` |  title of the ticket to be updated         |
+| `ticketPriority`  | `string` |  Priority of the ticket to be updated      |
+| `description`     | `string` |  Description to be updated                 |
+| `status`          | `string` |  Status open or closed to be updated       |
+
+
+#### Example
+
+```
+    {
+        "title":"The first ticket updated"
+    }
+```
+
+#### Output
+
+```
+    {
+        "ticket": "The first ticket updated",
         "ticketPriority": "2",
         "description": "Random description for random ticket",
         "status": "OPEN",

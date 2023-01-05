@@ -16,7 +16,6 @@ exports.createTicket = async (req,res)=>{
         userTypes: constants.userTypes.engineer,
         userStatus: constants.userStatus.approved
     })
-    console.log(engineer);
 
     ticketObject.assignee = engineer.userId;
 
@@ -27,7 +26,6 @@ exports.createTicket = async (req,res)=>{
             const user = await User.findOne({
                 userId: req.body.userId
             })
-            console.log(user)
             user.ticketCreated.push(ticket._id)
             await user.save()
 
@@ -46,17 +44,18 @@ exports.createTicket = async (req,res)=>{
 
 
 const canUpdate = (user, ticket) => {
-    return user.userId == ticket.reporter ||
-        user.userId == ticket.assignee ||
-        user.userType == constants.userTypes.admin
+    return user.userId == ticket.reporter || 
+            user.userId == ticket.assignee || 
+            user.userType == constants.userTypes.admin
 }
 
 exports.updateTicket = async (req, res) => {
     const ticket = await Ticket.findOne({ _id: req.params.id })
-
+    console.log(ticket)
     const savedUser = await User.findOne({
         userId: req.body.userId
     })
+    console.log(savedUser)
 
     if (canUpdate(savedUser, ticket)) {
         ticket.title = req.body.title != undefined
