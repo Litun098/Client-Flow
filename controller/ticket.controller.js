@@ -3,11 +3,11 @@ const Ticket = require('../models/ticket.model')
 const objectConverter = require('../utils/objectConverter');
 const constants = require('../utils/constants');
 
-exports.createTicket = async (req,res)=>{
+exports.createTicket = async (req, res) => {
     const ticketObject = {
-        title:req.body.title,
-        ticketPriority:req.body.ticketPriority,
-        description:req.body.description,
+        title: req.body.title,
+        ticketPriority: req.body.ticketPriority,
+        description: req.body.description,
         status: req.body.status,
         reporter: req.body.userId,
     }
@@ -44,9 +44,9 @@ exports.createTicket = async (req,res)=>{
 
 
 const canUpdate = (user, ticket) => {
-    return user.userId == ticket.reporter || 
-            user.userId == ticket.assignee || 
-            user.userType == constants.userTypes.admin
+    return user.userId == ticket.reporter ||
+        user.userId == ticket.assignee ||
+        user.userType == constants.userTypes.admin
 }
 
 exports.updateTicket = async (req, res) => {
@@ -84,7 +84,7 @@ exports.updateTicket = async (req, res) => {
     }
 }
 
-exports.getAllTickets = async (req, res) => { 
+exports.getAllTickets = async (req, res) => {
     /**
      * Use cases:
      *  - ADMIN : should get the list of all the tickets
@@ -94,17 +94,17 @@ exports.getAllTickets = async (req, res) => {
 
     const queryObject = {};
 
-    if(req.query.status != undefined){
+    if (req.query.status != undefined) {
         queryObject.status = req.query.status;
     }
 
-    const savedUser = await User.findOne({userId:req.body.userId})
+    const savedUser = await User.findOne({ userId: req.body.userId })
 
-    if(savedUser.user == constants.userTypes.admin){
+    if (savedUser.user == constants.userTypes.admin) {
         // Do something
-    }else if(savedUser.userTypes == constants.userTypes.customer){
+    } else if (savedUser.userTypes == constants.userTypes.customer) {
         queryObject.reporter = savedUser.userId
-    }else{
+    } else {
         queryObject.assignee = savedUser.userId
     }
 
@@ -114,7 +114,7 @@ exports.getAllTickets = async (req, res) => {
 
 exports.getOneTicket = async (req, res) => {
     const ticket = await Ticket.findOne({
-        _id:req.params.id
+        _id: req.params.id
     })
     res.status(200).status(objectConverter.ticketResponse(ticket));
 }

@@ -3,101 +3,101 @@ const User = require('../models/user.model');
 const ObjectConverter = require("../utils/objectConverter")
 const constants = require("../utils/constants")
 
-const fetchAll = async (res)=>{
+const fetchAll = async (res) => {
     let users;
-    try{
+    try {
         users = await User.find();
-    }catch(err){
+    } catch (err) {
         res.status(500).send({
-            message:"Some internal error occured"
+            message: "Some internal error occured"
         })
     }
     return users
 }
 
-const fetchByName = async (userNameReq,res)=>{
+const fetchByName = async (userNameReq, res) => {
     let users;
-    
-    try{
+
+    try {
         users = await User.find({
-            name:userNameReq
+            name: userNameReq
         })
-    }catch(err){
-        console.log("Error while the user for the user name",userNameReq);
+    } catch (err) {
+        console.log("Error while the user for the user name", userNameReq);
         res.status(500).send({
-            message:"Some internal error occured."
+            message: "Some internal error occured."
         })
     }
     return users
 }
 
-const fetchByTypeAndStatus = async (userTypeReq,userStatusReq,res)=>{
+const fetchByTypeAndStatus = async (userTypeReq, userStatusReq, res) => {
     let users;
 
-    try{
+    try {
         users = await User.find({
-            userTypes:userTypeReq,
-            userStatus:userStatusReq
+            userTypes: userTypeReq,
+            userStatus: userStatusReq
         });
-    }catch(err){
+    } catch (err) {
         console.log(`Error while fetching the user for user type [${userTypeReq}] and user status [${userStatusReq}]`);
         res.status(500).send({
-            message:"Some internal error occured."
+            message: "Some internal error occured."
         })
     }
     return users;
 }
 
-const fetchByType = async (userTypeReq,res)=>{
+const fetchByType = async (userTypeReq, res) => {
     let users;
-    
-    try{
+
+    try {
         users = await User.find({
-            userType:userTypeReq
+            userType: userTypeReq
         });
-    }catch(err){
+    } catch (err) {
         console.log(`Error while fetching the user for user types [${userTypeReq}]`);
         res.status.send({
-            message:"Some internal error occured."
+            message: "Some internal error occured."
         })
     }
     return users;
 }
 
-const fetchByStatus = async (userStatusReq,req)=>{
+const fetchByStatus = async (userStatusReq, req) => {
     let users;
 
-    try{
-        users =await User.find({
-            userStatus:userStatusReq
+    try {
+        users = await User.find({
+            userStatus: userStatusReq
         })
-    }catch(err){
+    } catch (err) {
         consolw.log(err);
         res.status(500).send({
-            message:"Some internal error occured."
+            message: "Some internal error occured."
         })
     }
     return users;
 }
 
-exports.findById = async (req,res)=>{
+exports.findById = async (req, res) => {
     const userIdReq = req.params.userId;
     let user;
-    
-    try{
+
+    try {
         user = await User.findOne({
-            userId:userIdReq
+            userId: userIdReq
         })
-    }catch(err){
+    } catch (err) {
         res.status(500).send({
-            message:"Internal server error"
+            message: "Internal server error"
         })
     }
-    if(user){
+    if (user) {
         res.status(200).send(user);
-    }else{
+    } else {
         res.status(200).send({
-            message:`User with this id [${userIdReq}] is not present`
+            message: `User with this id [${userIdReq}] is not present`
         })
     }
 }
@@ -107,49 +107,49 @@ exports.findById = async (req,res)=>{
  * Fetch the list of all users
 */
 
-exports.findAll = async (req,res)=>{
+exports.findAll = async (req, res) => {
     let user;
-    
+
     let userTypeReq = req.body.userTypes;
     let userStatusReq = req.body.userStatus;
     let userNameReq = req.query.name;
-    
-    if(userNameReq){
-        user = await fetchByName(userNameReq,res);
-    }else if(userTypeReq && userStatusReq){
-        user = await fetchByTypeAndStatus(userStatusReq,userStatusReq,res);
-    }else if(userTypeReq){
-        user = await fetchByType(userTypeReq,res);
-    }else if(userStatusReq){
-        user = await fetchByStatus(userStatusReq,res);
-    }else{
+
+    if (userNameReq) {
+        user = await fetchByName(userNameReq, res);
+    } else if (userTypeReq && userStatusReq) {
+        user = await fetchByTypeAndStatus(userStatusReq, userStatusReq, res);
+    } else if (userTypeReq) {
+        user = await fetchByType(userTypeReq, res);
+    } else if (userStatusReq) {
+        user = await fetchByStatus(userStatusReq, res);
+    } else {
         user = await fetchAll(res)
     }
     res.status(200).send(ObjectConverter.userResponse(user))
 }
 
-exports.update = async (req,res)=>{
+exports.update = async (req, res) => {
     const userIdReq = req.params.userId;
-    try{
+    try {
         const user = await User.findOneAndUpdate({
-            userId:userIdReq
-        },{
-            userStatus:req.body.userStatus
+            userId: userIdReq
+        }, {
+            userStatus: req.body.userStatus
         }).exec()
 
-        if(user){
+        if (user) {
             res.status(200).send({
-                message:`User record has been updated successfully.`
+                message: `User record has been updated successfully.`
             })
-        }else{
+        } else {
             res.status(200).send({
-                message:"No user found with this Id"
+                message: "No user found with this Id"
             })
         }
-    }catch(err){
-        console.log("Error while updating the record",err);
+    } catch (err) {
+        console.log("Error while updating the record", err);
         res.status(500).send({
-            message:"Some internal error occured."
+            message: "Some internal error occured."
         })
     }
 }

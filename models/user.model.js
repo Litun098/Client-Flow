@@ -1,52 +1,52 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+    name: {
+        type: String,
+        required: true
     },
-    userId:{
-        type:String,
-        required:true,
-        unique:true
+    userId: {
+        type: String,
+        required: true,
+        unique: true
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+        type: String,
+        required: true
     },
-    email:{
-        type:String,
-        required:true,
-        lowercase:true,
-        unique:true,
-        isEmail:true
+    email: {
+        type: String,
+        required: true,
+        lowercase: true,
+        unique: true,
+        isEmail: true
     },
-    createdAt:{
-        type:Date,
-        immutable:true,
-        default:()=>Date.now(),
+    createdAt: {
+        type: Date,
+        immutable: true,
+        default: () => Date.now(),
     },
-    updatedAt:{
-        type:Date,
-        default:()=>Date.now()
+    updatedAt: {
+        type: Date,
+        default: () => Date.now()
     },
     userTypes: {
         type: String,
         required: true,
         default: "CUSTOMER"
-    }, 
+    },
     userStatus: {
         type: String,
         required: true,
         default: "APPROVED"
     },
-    ticketCreated:{
-        type:[mongoose.SchemaTypes.ObjectId],
-        ref:"Ticket"
+    ticketCreated: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "Ticket"
     },
-    ticketAssigned:{
-        type:[mongoose.SchemaTypes.ObjectId],
-        ref:"Ticket"
-    }   
+    ticketAssigned: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "Ticket"
+    }
 });
-module.exports = mongoose.model('User',userSchema);
+module.exports = mongoose.model('User', userSchema);

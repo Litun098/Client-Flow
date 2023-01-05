@@ -12,9 +12,9 @@ const {
 } = require('../middleware/authjwt')
 
 
-module.exports = function(app){
-    app.post('/crm/api/ticket/',[verifyToken],createTicket);
-    app.put('/crm/api/ticket/:id',[verifyToken],updateTicket);
-    app.get('/crm/api/ticket',[verifyToken],getAllTickets);
-    app.get('/crm/api/ticket/:id',[verifyToken],getOneTicket);
+module.exports = function (app) {
+    app.post('/crm/api/ticket/', [verifyToken], createTicket);
+    app.put('/crm/api/ticket/:id', [verifyToken], updateTicket);
+    app.get('/crm/api/ticket', [verifyToken], getAllTickets);
+    app.get('/crm/api/ticket/:id', [verifyToken], getOneTicket);
 }
