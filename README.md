@@ -121,7 +121,7 @@
 | `x-access-token`  | `string` | **Required**. token        |
 
 #### Example 
-```http
+```
    GET localhost:3000/crm/api/users/admin
 ```
 
@@ -154,12 +154,16 @@
 | :-----------------| :------- | :------------------------- |
 | `x-access-token`  | `string` | **Required**. token        |
 
+| path params            | Type     | Description                |
+| :-----------------| :------- | :------------------------- |
+| `userId`  | `string` | **Required**. user id        |
+
 | body           | Type     | Description                    |
 | :------------  | :------- | :-------------------------     |
 | `userStatus`   | `string` | **Required**. update userStatus|
 
 #### Example 
-```http
+```
    PUT localhost:3000/crm/api/users/admin
 ```
 
@@ -232,7 +236,7 @@
 
 | params            | Type     | Description                                |
 | :-----------------| :------- | :------------------------------------------|
-| `id`              | `string` | **Required**.Id of the ticked to be updated|
+| `id`              | `string` | **Required**.Id of the ticket to be updated|
 
 
 | body              | Type     | Description                                |
@@ -245,13 +249,13 @@
 
 #### Example
 
-``` http
+``` 
     PUT localhost:3000/crm/api/ticket/63b5babf0e3bf0ba61c233a7
 ```
 
 ```
     {
-        "title":"The first ticket updated"
+        "status": "CLOSED"
     }
 ```
 
@@ -259,14 +263,45 @@
 
 ```
     {
-        "ticket": "The first ticket updated",
+        "ticket": "The first ticket",
         "ticketPriority": "2",
         "description": "Random description for random ticket",
-        "status": "OPEN",
+        "status": "CLOSED",
         "reporter": "dibya123",
         "assignee": "litun12345",
         "id": "63b5babf0e3bf0ba61c233a7",
         "createdAt": "2023-01-04T17:43:27.495Z",
         "updatedAt": "2023-01-04T17:43:27.495Z"
     }
+```
+
+#### Get ticket by Id
+
+``` http
+    PUT localhost:3000/crm/api/ticket/:id
+```
+| header            | Type     | Description                |
+| :-----------------| :------- | :------------------------- |
+| `x-access-token`  | `string` | **Required**. token        |
+
+| Query params      | Type     | Description                                |
+| :-----------------| :------- | :------------------------------------------|
+| `id`              | `string` | **Required**.Id of the ticket              |
+
+#### Output
+
+```
+    [
+        {
+            "ticket": "The first ticket updated",
+            "ticketPriority": "2",
+            "description": "Random description for random ticket",
+            "status": "CLOSED",
+            "reporter": "dibya123",
+            "assignee": "litun12345",
+            "id": "63b5babf0e3bf0ba61c233a7",
+            "createdAt": "2023-01-04T17:43:27.495Z",
+            "updatedAt": "2023-01-04T17:43:27.495Z"
+        }
+    ]
 ```
