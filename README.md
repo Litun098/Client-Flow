@@ -4,11 +4,19 @@
 ```
     npm i
 ```
+
+```bash
+https://github.com/Litun098/crm-app.git
+
+Create a database and add your database credentials to the .env file.
+
 #### Start Application
 ``` 
     npm start
 ```
 
+
+## API Endpoints
 
 #### Sign up User
 
