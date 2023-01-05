@@ -5,6 +5,8 @@
     npm i
 ```
 
+Clone the repository:
+
 ```bash
 https://github.com/Litun098/crm-app.git
 ```
