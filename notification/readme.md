@@ -1,4 +1,4 @@
-# notification for CRM App
+# Notification for CRM App
 
 #### install required packages
 
@@ -6,7 +6,7 @@
     npm i
 ```
 Create a .env file and define MAIL_PORT, EMAIL_USER, EMAIL_PASS for ticketNotification.js and database name and url for db.config.js
- 
+
 For Example 
 ```
 
