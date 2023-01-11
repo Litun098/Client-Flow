@@ -16,7 +16,11 @@ const ticketNotificationSchema = new mongoose.Schema({
     recipientEmail:{
         type:[String],
         required:true,
-        default:"UN_SENT"
+    },
+    sentStatus: {
+        type: String,
+        required: true,
+        default: "UN_SENT",
     },
     requester:{
         type:String

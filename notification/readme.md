@@ -39,3 +39,31 @@
         "status": "Accepted Request"
     }
 ```
+#### Get notification by Id
+
+``` http
+    POST localhost:3030/notifyServer/api/notifications/:id
+```
+| path params | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` | **Required**. Notification subject|
+
+#### Example Input
+```
+    GET localhost:3030/notifyServer/api/notifications/63b5babf0e3bf0ba61c233a7
+```
+
+#### Output
+
+```
+    {
+        "requestId": "63b5babf0e3bf0ba61c233a7",
+        "subject": "Ticket updated by Engineer",
+        "content": "Your ticket has been updated",
+        "recipientEmail": [
+            "nayaklitun9@gmail.com",
+            "litunnayak09@hotmail.com"
+        ],
+        "sentStatus": "UN_SENT"
+    }
+```
