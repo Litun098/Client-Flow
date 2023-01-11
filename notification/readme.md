@@ -5,6 +5,18 @@
 ```
     npm i
 ```
+Create a .env file and define MAIL_PORT, EMAIL_USER, EMAIL_PASS for ticketNotification.js and database name and url for db.config.js
+ 
+For Example 
+```
+
+    MAIL_PORT = "455" 
+    EMAIL_USER = "crm.notification@gmail.com"
+    EMAIL_PASS = "email_password"
+    DATABASE = "notification_db"
+    DATABASE_URL = "mongodb://localhost:27017/notification_db"
+```
+
 ## API Endpoints
 
 #### Create ticket notification

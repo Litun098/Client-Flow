@@ -1,4 +1,6 @@
+require('dotenv').config();
+
 module.exports = {
-    DB_NAME:"notification_db",
-    DB_URL:"mongodb://localhost:27017/notification_db"
+    DB_NAME:process.env.DATABASE,
+    DB_URL:process.env.DATABASE_URL
 }
