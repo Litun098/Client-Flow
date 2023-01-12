@@ -17,7 +17,7 @@ cron.schedule('*/5 * * * * *',async ()=>{
     //Send notificatio to each mail account which are not sent
     notifications.forEach(notification=>{
         const mailData = {
-            from:process.env.EMAIL_USER,
+            from:process.env.EMAIL_USER, // Sender email 
             to:notification.recipientEmail,
             subject:notification.subject,
             text:notification.content
