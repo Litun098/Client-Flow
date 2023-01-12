@@ -1,5 +1,5 @@
-const express = require('express');
 require('./crons/cron')
+const express = require('express');
 const dbConfig = require('./configs/db.config');
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -11,13 +11,13 @@ mongoose.connect(dbConfig.DB_URL,
     () => { console.log("Connected to mongoDB") },
     err => { console.log('Error:', err.message) }
 );
-    
+
 require('./routes/index')(app)
 
 console.log(process.env.PORT);
 
 port = process.env.PORT || 3030
-app.listen(port,()=>{
-    console.log("Application started at port",3030);
+app.listen(port, () => {
+    console.log("Application started at port", port);
 })
 
