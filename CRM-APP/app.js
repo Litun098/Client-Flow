@@ -7,6 +7,7 @@ const constants = require('./utils/constants');
 const authRouter = require('./routes/auth.routes');
 const userRouter = require('./routes/user.routes');
 const ticketRouter = require('./routes/ticket.routes');
+require('dotenv').config();
 
 
 
