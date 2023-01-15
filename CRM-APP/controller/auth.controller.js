@@ -34,7 +34,7 @@ exports.signup = async (req, res) => {
         }
         res.status(201).send(postResponse);
     } catch (err) {
-        console.log("Something went wrong.", err);
+        // console.log("Something went wrong.", err);
         res.status(500).send({
             message: "Something went wrong."
         })
