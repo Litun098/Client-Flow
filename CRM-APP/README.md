@@ -1,4 +1,4 @@
-### CRM Application backend
+### Client-Flow Application backend
 
 #### Install required packages
 ```
@@ -22,7 +22,7 @@ Create a database and add your database credentials to the .env file.
 
 #### Sign up User
 
-``` http
+``` HTTP
     POST localhost:3000/crm/api/auth/signup
 ```
 | body      | Type     | Description                |
@@ -48,7 +48,7 @@ Create a database and add your database credentials to the .env file.
 
 #### Signin User
 
-``` http
+``` HTTP
     POST localhost:3000/crm/api/auth/signin
 ```
 | body       | Type     | Description                |
@@ -83,7 +83,7 @@ Create a database and add your database credentials to the .env file.
 
 **_NOTE:_**  user should be ADMIN.
 
-``` http
+``` HTTP
     POST localhost:3000/crm/api/users
 ```
 | header            | Type     | Description                |
@@ -123,7 +123,7 @@ Create a database and add your database credentials to the .env file.
 
 **_NOTE:_**  user should be ADMIN.
 
-``` http
+``` HTTP
     POST localhost:3000/crm/api/users/:userId
 ```
 | header            | Type     | Description                |
@@ -157,7 +157,7 @@ Create a database and add your database credentials to the .env file.
 
 **_NOTE:_**  user should be ADMIN.
 
-``` http
+``` HTTP
     PUT localhost:3000/crm/api/users/:userId
 ```
 | header            | Type     | Description                |
@@ -193,7 +193,7 @@ Create a database and add your database credentials to the .env file.
 
 #### Create ticket
 
-``` http
+``` HTTP
     POST localhost:3000/crm/api/ticket/
 ```
 | header            | Type     | Description                |
@@ -237,7 +237,7 @@ Create a database and add your database credentials to the .env file.
 
 #### Update ticket
 
-``` http
+``` HTTP
     PUT localhost:3000/crm/api/ticket/:id
 ```
 | header            | Type     | Description                |
@@ -287,7 +287,7 @@ Create a database and add your database credentials to the .env file.
 
 #### Get ticket by Id
 
-``` http
+``` HTTP
     PUT localhost:3000/crm/api/ticket/:id
 ```
 | header            | Type     | Description                |
